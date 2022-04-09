@@ -5,127 +5,146 @@ info:
   version: 1.0.0
 servers:
   - url: /api/v1
+
 tags:
-  - name: Examples
-    description: Simple example endpoints
-  - name: Specification
-    description: The swagger API specification
+  - name: Auth
+    description: Authentication endpoints
+
 paths:
-  /examples:
+  /auth/getUserDetails:
     get:
       tags:
-        - Examples
-      description: Fetch all examples
+        - Auth
+      security:
+        - Bearer: []
+      summary: Get user details
+      description: Get user details
       responses:
         200:
-          description: Return the example with the specified id
+          description: Success
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Example'
-        4XX:
-          description: Example not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        5XX:
-          description: Example not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/GetUserDetailsResponse"
+  /auth/signupUser:
     post:
       tags:
-        - Examples
-      description: Create a new example
+        - Auth
+      security:
+        - Bearer: []
+      summary: Signup a new user
+      description: Signup a new user
       requestBody:
-        description: an example
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleBody'
+              $ref: "#/components/schemas/SignupUser"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /auth/signupStorage:
+    post:
+      tags:
+        - Auth
+      security:
+        - Bearer: []
+      summary: Signup a new storage
+      description: Signup a new storage
+      requestBody:
         required: true
-      responses:
-        201:
-          description: Return the example with the specified id
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Example'
-        4XX:
-          description: Example not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        5XX:
-          description: Example not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /examples/{id}:
-    get:
-      tags:
-        - Examples
-      parameters:
-        - name: id
-          in: path
-          description: The id of the example to retrieve
-          required: true
-          schema:
-            type: integer
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignupStorage"
       responses:
         200:
-          description: Return the example with the specified id
+          description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Example'
-        4XX:
-          description: Example not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        5XX:
-          description: Example not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /spec:
-    get:
-      tags:
-        - Specification
-      responses:
-        200:
-          description: Return the API specification
-          content: {}
+                $ref: "#/components/schemas/SuccessResponse"
+
 components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: Provide a valid JWT token
   schemas:
-    Example:
+    GetUserDetailsResponse:
       type: object
       properties:
-        id:
-          type: integer
-          example: 3
+        email:
+          type: string
+        createdAt:
+          type: object
+          properties:
+            _seconds:
+              type: number
+            _nanoseconds:
+              type: number
+        city:
+          type: string
+        state:
+          type: string
+        phone:
+          type: number
         name:
           type: string
-          example: example 3
-    Error:
+        profilePicture:
+          type: string
+    SignupUser:
       type: object
-      additionalProperties: true
-
-    ExampleBody:
-      title: example
       required:
         - name
-      type: object
+        - email
+        - state
+        - city
       properties:
         name:
           type: string
-          example: no_stress
+        phone:
+          type: number
+        email:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    SignupStorage:
+      type: object
+      required:
+        - name
+        - email
+        - address
+        - location
+        - state
+        - city
+        - pincode
+      properties:
+        name:
+          type: string
+        phone:
+          type: number
+        email:
+          type: string
+        address:
+          type: string
+        location:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        pincode:
+          type: number
