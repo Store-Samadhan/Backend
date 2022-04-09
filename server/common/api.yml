@@ -9,6 +9,8 @@ servers:
 tags:
   - name: Auth
     description: Authentication endpoints
+  - name: User
+    description: User endpoints
 
 paths:
   /auth/getUserDetails:
@@ -61,6 +63,63 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/SignupStorage"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /user/bookings:
+    get:
+      tags:
+        - User
+      security:
+        - Bearer: []
+      summary: Get user bookings
+      description: Get user bookings
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetUserBookingsResponse"
+  /user/updateUser:
+    put:
+      tags:
+        - User
+      security:
+        - Bearer: []
+      summary: Update user
+      description: Update user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUser"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /user/addRating:
+    post:
+      tags:
+        - User
+      security:
+        - Bearer: []
+      summary: Add rating
+      description: Add rating
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddRating"
       responses:
         200:
           description: Success
@@ -148,3 +207,75 @@ components:
           type: string
         pincode:
           type: number
+    UpdateUser:
+      type: object
+      properties:
+        userData:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: number
+            email:
+              type: string
+            addresses:
+              type: array
+              items:
+                type: object
+                properties:
+                  address:
+                    type: string
+                  pincode:
+                    type: number
+            state:
+              type: string
+            city:
+              type: string
+    AddRating:
+      type: object
+      properties:
+        rating:
+          type: number
+        storageId:
+          type: string
+        review:
+          type: string
+    GetUserBookingsResponse:
+      type: object
+      properties:
+        bookings:
+          type: array
+          items:
+            type: object
+            properties:
+              storageId:
+                type: string
+              storageName:
+                type: string
+              address:
+                type: string
+              image:
+                type: string
+              fromDate:
+                type: object
+                properties:
+                  _seconds:
+                    type: number
+                  _nanoseconds:
+                    type: number
+              toDate:
+                type: object
+                properties:
+                  _seconds:
+                    type: number
+                  _nanoseconds:
+                    type: number
+              paid:
+                type: boolean
+              amount:
+                type: number
+              boxes:
+                type: number
+              orderId:
+                type: string
