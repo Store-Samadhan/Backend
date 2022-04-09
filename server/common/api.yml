@@ -84,7 +84,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetUserBookingsResponse"
+                $ref: "#/components/schemas/GetBookingsResponse"
   /user/updateUser:
     put:
       tags:
@@ -120,6 +120,70 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/AddRating"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /storage/bookings:
+    get:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Get bookings
+      description: Get bookings
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetBookingsResponse"
+  /storage/getFilteredStorage:
+    get:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Get filtered storage
+      description: Get filtered storage
+      parameters:
+        - name: filter
+          in: query
+          description: Filter storage
+          schema:
+            type: string
+        - name: values
+          in: query
+          description: Filter values
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FetchAllStorages"
+  /storage/updateStorage:
+    put:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Update storage
+      description: Update storage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateStorage"
       responses:
         200:
           description: Success
@@ -241,7 +305,7 @@ components:
           type: string
         review:
           type: string
-    GetUserBookingsResponse:
+    GetBookingsResponse:
       type: object
       properties:
         bookings:
@@ -250,6 +314,8 @@ components:
             type: object
             properties:
               storageId:
+                type: string
+              userId:
                 type: string
               storageName:
                 type: string
@@ -279,3 +345,127 @@ components:
                 type: number
               orderId:
                 type: string
+    UpdateStorage:
+      type: object
+      properties:
+        storageData:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: number
+            email:
+              type: string
+            address:
+              type: string
+            location:
+              type: string
+            state:
+              type: string
+            city:
+              type: string
+            pincode:
+              type: number
+            images:
+              type: array
+              items:
+                type: string
+            pricing:
+              type: object
+              properties:
+                columns:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      header:
+                        type: string
+                      accessor:
+                        type: string
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      boxes:
+                        type: string
+                      cold:
+                        type: number
+                      normal:
+                        type: number
+    FetchAllStorages:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          email:
+            type: string
+          address:
+            type: string
+          location:
+            type: string
+          state:
+            type: string
+          city:
+            type: string
+          pincode:
+            type: number
+          images:
+            type: array
+            items:
+              type: string
+          pricing:
+            type: object
+            properties:
+              columns:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    header:
+                      type: string
+                    accessor:
+                      type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    boxes:
+                      type: string
+                    cold:
+                      type: number
+                    normal:
+                      type: number
+          ratings:
+            type: object
+            properties:
+              avgRating:
+                type: number
+              totalReviews:
+                type: number
+              reviews:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: string
+                    review:
+                      type: string
+                    rating:
+                      type: number
+                    userName:
+                      type: string
+                    createdAt:
+                      type: object
+                      properties:
+                        _seconds:
+                          type: number
+                        _nanoseconds:
+                          type: number
