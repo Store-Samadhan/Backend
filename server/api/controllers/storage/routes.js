@@ -4,6 +4,7 @@ import controller from "./controller";
 
 export default express
   .Router()
-  .get("/getFilteredStorage", controller.getFilteredStorages)
-  .get("/bookings", controller.getStorageBookings)
-  .put("/updateStorage", controller.updateStorage);
+  .get("/getFilteredStorage", authHandler, controller.getFilteredStorages)
+  .get("/getStorage", authHandler, controller.getStorage)
+  .get("/bookings", authHandler, controller.getStorageBookings)
+  .put("/updateStorage", authHandler, controller.updateStorage);

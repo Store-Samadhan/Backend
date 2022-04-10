@@ -86,6 +86,37 @@ class StorageService {
     }
   }
 
+  async getStorageDetails(storageId) {
+    try {
+      const storage = await this.storageCollectionRef.doc(storageId).get();
+      if (!storage.exists) {
+        return {};
+      }
+      const ratings = await this.ratingCollectionRef.doc(storage.id).get();
+      return {
+        id: storage.id,
+        name: storage.data().name,
+        address: storage.data().address,
+        pincode: storage.data().pincode,
+        email: storage.data().email,
+        city: storage.data().city,
+        state: storage.data().state,
+        location: storage.data().location,
+        aadhar: storage.data().aadhar,
+        pan: storage.data().pan,
+        phone: storage.data().phone,
+        images: storage.data().images,
+        pricing: storage.data().pricing,
+        avgPrice: storage.data().avgPrice,
+        tags: storage.data().tags,
+        ratings: ratings.empty ? 0 : ratings.data(),
+      };
+    } catch (error) {
+      l.error("[STORAGE: GET STORAGE DETAILS]", error);
+      throw error;
+    }
+  }
+
   async updateStorage(uid, storageData) {
     try {
       const storage = await this.storageCollectionRef.doc(uid).get();

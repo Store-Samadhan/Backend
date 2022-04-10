@@ -4,5 +4,5 @@ import controller from "./controller";
 
 export default express
   .Router()
-  .post("/initializeBooking",  controller.createBooking)
+  .post("/initializeBooking", authHandler,  controller.createBooking)
   .post("/verifyBooking", authHandler, controller.verifyBooking);

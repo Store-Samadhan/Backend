@@ -142,6 +142,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetBookingsResponse"
+  /storage/getStorage:
+    get:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Get storage details
+      description: Get storage details
+      parameters:
+        - name: storageId
+          in: query
+          description: Storage Id
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetStorageResponse"
   /storage/getFilteredStorage:
     get:
       tags:
@@ -445,6 +466,83 @@ components:
                       cold:
                         type: number
                       normal:
+                        type: number
+    GetStorageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        location:
+          type: string
+        aadhar:
+          type: number
+        pan:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        pincode:
+          type: number
+        images:
+          type: array
+          items:
+            type: string
+        pricing:
+          type: object
+          properties:
+            columns:
+              type: array
+              items:
+                type: object
+                properties:
+                  header:
+                    type: string
+                  accessor:
+                    type: string
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  boxes:
+                    type: string
+                  cold:
+                    type: number
+                  normal:
+                    type: number
+        ratings:
+          type: object
+          properties:
+            avgRating:
+              type: number
+            totalReviews:
+              type: number
+            reviews:
+              type: array
+              items:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                  review:
+                    type: string
+                  rating:
+                    type: number
+                  userName:
+                    type: string
+                  createdAt:
+                    type: object
+                    properties:
+                      _seconds:
+                        type: number
+                      _nanoseconds:
                         type: number
     FetchAllStorages:
       type: array

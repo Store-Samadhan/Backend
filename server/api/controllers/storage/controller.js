@@ -28,6 +28,19 @@ export class Controller {
     }
   }
 
+  async getStorage(req, res, next) {
+    try {
+      const { storageId } = req.query;
+      if (!storageId) {
+        throw { status: 402, message: "Storage ID is required" };
+      }
+      const response = await StorageService.getStorageDetails(storageId);
+      res.status(200).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
+
   async getStorageBookings(req, res, next) {
     try {
       const bookings = await StorageService.getStorageBookings(req.user.uid);
