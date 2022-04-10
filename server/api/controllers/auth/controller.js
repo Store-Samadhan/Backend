@@ -35,7 +35,6 @@ export class Controller {
         email,
         city,
         pincode,
-        id,
         aadhar,
         pan,
       } = req.body;
@@ -48,7 +47,6 @@ export class Controller {
         !city ||
         !pincode ||
         !phone ||
-        !id ||
         !aadhar ||
         !pan
       ) {
@@ -69,7 +67,6 @@ export class Controller {
         location,
         aadhar,
         pan,
-        id
       );
       return res.status(200).json(response);
     } catch (error) {

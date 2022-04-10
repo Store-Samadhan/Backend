@@ -33,12 +33,10 @@ class AuthService {
     address,
     location,
     aadhar,
-    pan,
-    id
+    pan
   ) {
     try {
       await this.storageCollectionRef.doc(uid).set({
-        id,
         name,
         phone,
         state,
