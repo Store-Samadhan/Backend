@@ -9,7 +9,7 @@ class BookingService {
   storageCollectionRef = database.collection("storages");
   bookingCollectionRef = database.collection("bookings");
 
-  async createBooking(userId, storageId, boxes, amount, storageType, duration) {
+  async createBooking(userId, storageId, boxes, amount, storageType, duration, userName) {
     try {
       const order = await razorpayInstance.orders.create({
         amount: (amount * 100).toString(),
@@ -20,6 +20,7 @@ class BookingService {
       const bookingDocumentRef = await this.bookingCollectionRef.add({
         storageId,
         userId,
+        userName,
         storageName: storage.data().name,
         image: storage.data().images ? storage.data().images[0] : "",
         boxes,

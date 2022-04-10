@@ -644,6 +644,8 @@ components:
           type: string
         duration:
           type: number
+        userName:
+          type: string
     InitializeBookingResponse:
       type: object
       properties:
