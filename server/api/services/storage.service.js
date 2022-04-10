@@ -8,9 +8,17 @@ class StorageService {
 
   async getFilteredStorages(filter, values) {
     try {
-      const storages = await this.storageCollectionRef
-        .where(filter, "in", values)
-        .get();
+      let storages;
+      if (filter === "tags") {
+        storages = await this.storageCollectionRef
+          .where("tags", "array-contains-any", values)
+          .get();
+      } else {
+        values = filter == "pincode" ? values.map(Number) : values;
+        storages = await this.storageCollectionRef
+          .where(filter, "in", values)
+          .get();
+      }
       if (storages.empty) {
         return [];
       }
