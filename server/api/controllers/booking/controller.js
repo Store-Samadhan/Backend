@@ -3,8 +3,9 @@ import BookingService from "../../services/booking.service";
 export class Controller {
   async createBooking(req, res, next) {
     try {
-      const { storageId, boxes, amount, storageType, duration } = req.body;
-      if (!storageId || !boxes || !amount || !storageType || !duration) {
+      const { storageId, boxes, amount, storageType, duration, userName } =
+        req.body;
+      if (!storageId || !boxes || !amount || !storageType || !duration || !userName) {
         throw { status: 402, message: "Missing required fields" };
       }
       const reponse = await BookingService.createBooking(
@@ -13,7 +14,8 @@ export class Controller {
         boxes,
         amount,
         storageType,
-        duration
+        duration,
+        userName
       );
       res.status(200).json(reponse);
     } catch (error) {
