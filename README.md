@@ -1,120 +1,119 @@
-# StoreSamadhan
+![Logo](https://res.cloudinary.com/connect-x/image/upload/v1649589432/Logo_j9js3h.png)
 
-Store Samadhan App
+## Hosted URL
 
-## Get Started
+https://cryptomon-iiitm.netlify.app/
 
-Get started developing...
+Welcome to StoreSamadhan, A Portal which provides you places where you can store you goods for days, weeks, months and year at very pocket-friendly prices.
 
-```shell
-# install deps
+## Objective
+
+In this high-moving life where we have to move from one place to another for jobs, education etc. many times and in this, we have to carry extra luggage in the journey e.g. Student they move from their place to home several times in a year for some days, months etc. either they have to carry extra luggage or pay rents for just storing their luggage in the rooms. To solve this problem, we made StoreSamadhan.
+
+## What does it do?
+
+### User
+
+- When a user registers, they will be redirected to the home page.
+- They should enter all the required fields in the profile section.
+- They can search storages just by entering pincode or city of their choice.
+- They can review storages by their rating and price.
+- After selecting storage they have to pay price and have access the storage provider details.
+
+### Storage Provider
+
+- When a storage provider register, th
+  ey required to enter some essential details like PAN number etc for security purposes.
+- They can enter the amount per box and other information like address, phone number etc
+
+## Development Setup
+
+### Frontend
+
+- Fork the repository
+- Clone the repository
+
+```sh
+git clone https://github.com/Store-Samadhan/Frontend.git
+```
+
+- Open the folder containing the cloned repository
+- Install the required packages, libraries and dependencies
+
+```sh
 npm install
-
-# run in development mode
-npm run dev
-
-# run tests
-npm run test
 ```
 
-## How do I modify the example API and make it my own?
+- Custom API keys can be set up in a .env file. We have added an example of env in .env.example file.
+- Run the project locally to access the frontend functionality of the website
 
-There are two key files that enable you to customize and describe your API:
-1. `server/routes.js` - This references the implementation of all of your routes. Add as many routes as you like and point each route your express handler functions.
-2. `server/common/api.yaml` - This file contains your [OpenAPI spec](https://swagger.io/specification/). Describe your API here. It's recommended that you to declare any and all validation logic in this YAML. `express-no-stress-typescript`  uses [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator) to automatically handle all API validation based on what you've defined in the spec.
-
-## Install Dependencies
-
-Install all package dependencies (one time operation)
-
-```shell
-npm install
-```
-
-## Run It
-#### Run in *development* mode:
-Runs the application is development mode. Should not be used in production
-
-```shell
-npm run dev
-```
-
-or debug it
-
-```shell
-npm run dev:debug
-```
-
-#### Run in *production* mode:
-
-Compiles the application and starts it in production production mode.
-
-```shell
-npm run compile
+```sh
 npm start
 ```
 
-## Test It
+### Backend
 
-Run the Mocha unit tests
+- Fork the repository
+- Clone the repository
 
-```shell
-npm test
+```sh
+git clone https://github.com/Store-Samadhan/Backend.git
 ```
 
-or debug them
+- Open the folder containing the cloned repository
+- Install the required packages, libraries and dependencies
 
-```shell
-npm run test:debug
+```sh
+npm install
 ```
 
-## Try It
-* Open your browser to [http://localhost:3000](http://localhost:3000)
-* Invoke the `/examples` endpoint 
-  ```shell
-  curl http://localhost:3000/api/v1/examples
-  ```
+- Custom API keys can be set up in a .env file. We have added an example of env in .env.example file.
+- Run the project locally to access the frontend functionality of the website
 
-
-## Debug It
-
-#### Debug the server:
-
-```
-npm run dev:debug
+```sh
+npm dev
 ```
 
-#### Debug Tests
+## Screenshots
 
-```
-npm run test:debug
-```
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/1.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/2.PNG)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/3.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/4.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/5.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/11.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/6.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/8.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/7.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/9.png)
+![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/10.png)
 
-#### Debug with VSCode
+## 🔗 Know the Project Creater
 
-Add these [contents](https://github.com/cdimascio/generator-express-no-stress/blob/next/assets/.vscode/launch.json) to your `.vscode/launch.json` file
+Akash Gupta
 
-## Lint It
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/akashgupta1909)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akash-gupta-1909/)
 
-View prettier linter output
+Harshil Mendpara
 
-```
-npm run lint
-```
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/HarshilMendpara)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harshil-mendpara/)
 
-Fix all prettier linter errors
+Ujjawal Gupta
 
-```
-npm run lint
-```
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/UjjawalGupta30)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ujjawalgupta30/)
 
-## Deploy It
+Raj Varsani
 
-Deploy to CloudFoundry
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/RajVarsani)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/varsani-raj/)
 
-```shell
-cf push StoreSamadhan
-```
+## Demo
 
+https://drive.google.com/file/d/1MY4sTesn01kohd_dsUrUFYJoknegp6v3/view
 
-   
+## License
+
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
