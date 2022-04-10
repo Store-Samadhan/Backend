@@ -16,11 +16,14 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-openapi-validator": "^4.10.6",
     "firebase-admin": "^10.0.2",
-    "pino": "^6.10.0"
+    "nanoid": "^3.3.2",
+    "pino": "^6.10.0",
+    "razorpay": "^2.8.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

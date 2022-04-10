@@ -191,6 +191,48 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessResponse"
+  /booking/initializeBooking:
+    post:
+      tags:
+        - Booking
+      security:
+        - Bearer: []
+      summary: Initialize booking
+      description: Initialize booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitializeBooking"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /booking/verifyBooking:
+    post:
+      tags:
+        - Booking
+      security:
+        - Bearer: []
+      summary: Verify booking
+      description: Verify booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VerifyBooking"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
 
 components:
   securitySchemes:
@@ -469,3 +511,48 @@ components:
                           type: number
                         _nanoseconds:
                           type: number
+    InitializeBooking:
+      type: object
+      required:
+        - storageId
+        - boxes
+        - amount
+        - address
+        - storageType
+        - duration
+      properties:
+        storageId:
+          type: string
+        boxes:
+          type: number
+        amount:
+          type: number
+        address:
+          type: string
+        storageType:
+          type: string
+        duration:
+          type: number
+    InitializeBookingResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        bookingId:
+          type: string
+    VerifyBooking:
+      type: object
+      required:
+        - razorpayPaymentId
+        - razorpaySignature
+        - orderId
+        - bookingId
+      properties:
+        razorpayPaymentId:
+          type: string
+        razorpaySignature:
+          type: string
+        orderId:
+          type: string
+        bookingId:
+          type: string
