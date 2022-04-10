@@ -640,8 +640,6 @@ components:
           type: number
         amount:
           type: number
-        phone:
-          type: number
         storageType:
           type: string
         duration:
