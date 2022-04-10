@@ -13,10 +13,11 @@ export class Controller {
 
   async addRating(req, res, next) {
     try {
-      const { rating, review, storageId } = req.body;
+      const { rating, review, userName, storageId } = req.body;
+      console.log(req.user);
       const response = await UserService.addRating(
         req.user.uid,
-        req.user.name,
+        userName,
         rating,
         review,
         storageId
