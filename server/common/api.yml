@@ -307,6 +307,10 @@ components:
           type: string
         location:
           type: string
+        aadhar:
+          type: number
+        pan:
+          type: string
         state:
           type: string
         city:
@@ -403,6 +407,10 @@ components:
               type: string
             location:
               type: string
+            aadhar:
+              type: number
+            pan:
+              type: string
             state:
               type: string
             city:
@@ -450,6 +458,10 @@ components:
           address:
             type: string
           location:
+            type: string
+          aadhar:
+            type: number
+          pan:
             type: string
           state:
             type: string

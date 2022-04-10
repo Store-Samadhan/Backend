@@ -32,6 +32,8 @@ class AuthService {
     pincode,
     address,
     location,
+    aadhar,
+    pan,
     id
   ) {
     try {
@@ -45,6 +47,8 @@ class AuthService {
         pincode,
         address,
         location,
+        aadhar,
+        pan,
         createdAt: new Date(),
       });
       return { message: "Storage registered successfully" };

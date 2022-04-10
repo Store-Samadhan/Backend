@@ -4,7 +4,7 @@ export class Controller {
   async signupUser(req, res, next) {
     try {
       const { name, phone, state, email, city } = req.body;
-      if (!name || !email || !state || !city) {
+      if (!name || !email || !state || !city || !phone) {
         throw {
           status: 402,
           message: "Please fill all necessary fields",
@@ -36,6 +36,8 @@ export class Controller {
         city,
         pincode,
         id,
+        aadhar,
+        pan,
       } = req.body;
       if (
         !name ||
@@ -44,7 +46,11 @@ export class Controller {
         !email ||
         !state ||
         !city ||
-        !pincode
+        !pincode ||
+        !phone ||
+        !id ||
+        !aadhar ||
+        !pan
       ) {
         throw {
           status: 402,
@@ -61,6 +67,8 @@ export class Controller {
         pincode,
         address,
         location,
+        aadhar,
+        pan,
         id
       );
       return res.status(200).json(response);
