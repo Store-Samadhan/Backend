@@ -367,6 +367,8 @@ components:
                 type: string
               address:
                 type: string
+              userContact:
+                type: number
               image:
                 type: string
               fromDate:
@@ -529,7 +531,6 @@ components:
         - storageId
         - boxes
         - amount
-        - address
         - storageType
         - duration
       properties:
@@ -539,8 +540,6 @@ components:
           type: number
         amount:
           type: number
-        address:
-          type: string
         storageType:
           type: string
         duration:

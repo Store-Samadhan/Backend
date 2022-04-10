@@ -11,10 +11,10 @@ class BookingService {
 
   async createBooking(
     userId,
+    phone,
     storageId,
     boxes,
     amount,
-    address,
     storageType,
     duration
   ) {
@@ -32,7 +32,8 @@ class BookingService {
         image: storage.data()?.images[0],
         boxes,
         amount,
-        address,
+        address: storage.data()?.address,
+        userContact: phone,
         storageType,
         orderId: order.id,
         fromDate: new Date(),
